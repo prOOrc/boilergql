@@ -277,6 +277,13 @@ func PointerTimeTimeToNullDotTime(v *time.Time) null.Time {
 	return null.TimeFromPtr(v)
 }
 
+func PointerTimeTimeToTimeDotTime(v *time.Time) time.Time {
+	if v == nil {
+		return time.Time{}
+	}
+	return *v
+}
+
 func NullDotStringToString(v null.String) string {
 	if !v.Valid {
 		return ""
