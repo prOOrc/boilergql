@@ -259,6 +259,24 @@ func IntToTimeDotTime(v int) time.Time {
 	return time.Unix(int64(v), 0)
 }
 
+func NullDotTimeToTimeTime(v null.Time) time.Time {
+	if !v.Valid {
+		return time.Time{}
+	}
+	return v.Time
+}
+
+func NullDotTimeToPointerTimeTime(v null.Time) *time.Time {
+	if !v.Valid {
+		return nil
+	}
+	return v.Ptr()
+}
+
+func PointerTimeTimeToNullDotTime(v *time.Time) null.Time {
+	return null.TimeFromPtr(v)
+}
+
 func NullDotStringToString(v null.String) string {
 	if !v.Valid {
 		return ""
