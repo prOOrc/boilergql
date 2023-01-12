@@ -198,6 +198,8 @@ func ToCursorValue(k string, v interface{}) string {
 	switch t := v.(type) {
 	case time.Time:
 		return k + cursorValueSeparator + t.Format(time.RFC3339)
+	case *time.Time:
+		return k + cursorValueSeparator + t.Format(time.RFC3339)
 	default:
 		return k + cursorValueSeparator + fmt.Sprintf("%v", v)
 	}
